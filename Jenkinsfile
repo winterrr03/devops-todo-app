@@ -33,7 +33,7 @@ pipeline {
                  withBuildConfiguration {
                      sshagent(credentials: [SSH_ID_REF]) {
                          sh '''
-                            ssh -o StrictHostKeyChecking=no root@ec2-18-143-167-76.ap-southeast-1.compute.amazonaws.com "docker run --detach --name dong1-todo-app -p 32145:8000 donghq3/devops-todo-app:0.0.2"
+                            ssh -o StrictHostKeyChecking=no root@ec2-18-143-167-76.ap-southeast-1.compute.amazonaws.com "docker run --detach --name dong1-todo-app -p 34567:8000 donghq3/devops-todo-app:0.0.2"
                             docker ps -a
                             '''
                     }
