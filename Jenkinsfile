@@ -44,7 +44,7 @@ pipeline {
 }
 
 void withBuildConfiguration(Closure body) {
-    withCredentials([string(credentialsId: 'dong_dockerhub', usernameVariable: 'donghq3', passwordVariable: 'dongpassword')]) {
+    withCredentials([usernamePassword(credentialsId: DOCKER_USER_REF, usernameVariable: 'donghq3', passwordVariable: '123456789')]) {
         body()
     }
 }
