@@ -23,7 +23,7 @@ pipeline {
         stage("Docker login and push docker image") {
             steps {
                 withBuildConfiguration {
-                    sh 'docker login --username ${repository_username} --password ${repository_password}'
+                    sh 'docker login -u ${repository_username} -p ${repository_password}'
                     sh 'docker push donghq3/devops-todo-app:0.0.2'        		
                 }
             }
@@ -44,7 +44,7 @@ pipeline {
 }
 
 void withBuildConfiguration(Closure body) {
-    withCredentials([usernamePassword(credentialsId: DOCKER_USER_REF, usernameVariable: 'repository_username', passwordVariable: 'repository_password')]) {
+    withCredentials([string(credentialsId: 'dong_dockerhub', usernameVariable: 'donghq3', passwordVariable: 'dongpassword')]) {
         body()
     }
 }
