@@ -23,7 +23,7 @@ pipeline {
         stage("Docker login and push docker image") {
             steps {
                 withBuildConfiguration {
-                    sh 'docker login -u ${repository_username} -p ${repository_password}'
+		    sh 'docker login --username ${donghq3} --password ${123456789}'                  
                     sh 'docker push donghq3/devops-todo-app:0.0.2'        		
                 }
             }
